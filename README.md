@@ -55,6 +55,12 @@ This will filter out the stage 1 training data. Then, run the following script t
 
 # Training 
 
+## Pretrained Models
+We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them here:
+https://drive.google.com/file/d/1rI_WSlot6ZNa_ERdLSCsGquUXEK_ikYb/view?usp=sharing
+
+Unzip them into `models/pretrained`.
+
 In `$TOP/.keras/keras.json` you will find the Keras configuration we used to train some of our models. 
 
 To train all models in the ensemble:
