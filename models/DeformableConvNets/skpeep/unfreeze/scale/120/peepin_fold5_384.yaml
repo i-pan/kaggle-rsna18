@@ -1,0 +1,122 @@
+---
+MXNET_VERSION: "mxnet"
+output_path: "skpeep/unfreeze/output/fold5_384/rfcn_dcn_default/"
+symbol: resnet_v1_101_rfcn_dcn
+gpus: '1'
+CLASS_AGNOSTIC: true
+SCALES:
+- 462
+- 462
+default:
+  frequent: 100
+  kvstore: device
+network:
+  pretrained: "model/pretrained_model/resnet_v1_101"
+  pretrained epoch: 0
+  PIXEL_MEANS:
+  - 103.06
+  - 115.90
+  - 123.15
+  IMAGE_STRIDE: 0
+  RCNN_FEAT_STRIDE: 16
+  RPN_FEAT_STRIDE: 16
+  FIXED_PARAMS:
+  - bn_conv1
+  - bn2
+  - gamma
+  - beta
+  FIXED_PARAMS_SHARED:
+  - bn_conv1
+  - bn2
+  - bn3
+  - bn4
+  - gamma
+  - beta
+  ANCHOR_RATIOS:
+  - 0.5
+  - 1
+  - 2
+  ANCHOR_SCALES:
+  - 4
+  - 8
+  - 16
+  - 32
+  NUM_ANCHORS: 12
+dataset:
+  NUM_CLASSES: 2
+  dataset: coco
+  dataset_path: "../../data/coco/rsna/"
+  image_set: train5-pos
+  root_path: "../../data/coco/"
+  test_image_set: test
+  proposal: rpn
+TRAIN:
+  lr: 0.0005
+  lr_step: '5.333'
+  warmup: true
+  warmup_lr: 0.00005
+  warmup_step: 8000
+  begin_epoch: 0
+  end_epoch: 8
+  model_prefix: 'rfcn_dcn_rsna_fold5_384'
+  RESUME: false
+  FLIP: true
+  SHUFFLE: true
+  ENABLE_OHEM: true
+  BATCH_IMAGES: 1
+  END2END: true
+  ASPECT_GROUPING: true
+  BATCH_ROIS: -1
+  BATCH_ROIS_OHEM: 128
+  FG_FRACTION: 0.25
+  FG_THRESH: 0.5
+  BG_THRESH_HI: 0.5
+  BG_THRESH_LO: 0.0
+  BBOX_REGRESSION_THRESH: 0.5
+  BBOX_WEIGHTS:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  RPN_BATCH_SIZE: 256
+  RPN_FG_FRACTION: 0.5
+  RPN_POSITIVE_OVERLAP: 0.7
+  RPN_NEGATIVE_OVERLAP: 0.3
+  RPN_CLOBBER_POSITIVES: false
+  RPN_BBOX_WEIGHTS:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  RPN_POSITIVE_WEIGHT: -1.0
+  CXX_PROPOSAL: false
+  RPN_NMS_THRESH: 0.7
+  RPN_PRE_NMS_TOP_N: 6000
+  RPN_POST_NMS_TOP_N: 300
+  RPN_MIN_SIZE: 0
+  BBOX_NORMALIZATION_PRECOMPUTED: true
+  BBOX_MEANS:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  BBOX_STDS:
+  - 0.1
+  - 0.1
+  - 0.2
+  - 0.2
+TEST:
+  HAS_RPN: true
+  BATCH_IMAGES: 1
+  CXX_PROPOSAL: false
+  RPN_NMS_THRESH: 0.7
+  RPN_PRE_NMS_TOP_N: 6000
+  RPN_POST_NMS_TOP_N: 300
+  RPN_MIN_SIZE: 0
+  PROPOSAL_NMS_THRESH: 0.7
+  PROPOSAL_PRE_NMS_TOP_N: 20000
+  PROPOSAL_POST_NMS_TOP_N: 2000
+  PROPOSAL_MIN_SIZE: 0
+  NMS: 0.3
+  test_epoch: 8
+  max_per_image: 5
