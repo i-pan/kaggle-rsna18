@@ -1,0 +1,9 @@
+{
+    "TRAIN_INFO_DIR":         "data/",
+    "TEST_INFO_DIR":          "data/", 
+    "RAW_TRAIN_DICOMS_DIR":   "data/train_dicoms/",
+    "RAW_TEST_DICOMS_DIR":    "data/test_dicoms/",
+    "TRAIN_IMAGES_CLEAN_DIR": "data/train_images/",
+    "TEST_IMAGES_CLEAN_DIR":  "data/test_images/",
+    "SUBMISSION_DIR":         "."     
+}
