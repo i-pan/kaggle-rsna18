@@ -65,6 +65,18 @@ To train all models in the ensemble:
 
 Comment out lines if you only wish to train specific models. 
 
+## Trained Models 
+To download the trained models we used for the challenge, use: 
+
+```
+wget --no-check-certificate \
+                         -r \
+'https://docs.google.com/uc?export=download&id=12abFXy7-FOwoKxFSJ__IbOGm9oQDU7CQ' \
+-O models.tar.gz
+```
+
+You can delete the existing `models/` directory and replace it with this one. It contains all of the code in addition to the model weights and pretrained models (see below). 
+
 ## Pretrained Models
 We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them via the following command: 
 
