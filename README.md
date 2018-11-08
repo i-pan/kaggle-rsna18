@@ -120,6 +120,9 @@ In this case, the model checkpoints will be saved in `$TOP/models/one_classifier
 We used code from the following repositories: 
 
 https://github.com/msracver/Deformable-ConvNets
+
 https://github.com/msracver/Relation-Networks-for-Object-Detection
+
 https://github.com/fizyr/keras-retinanet
+
 https://github.com/ahrnbom/ensemble-objdet
