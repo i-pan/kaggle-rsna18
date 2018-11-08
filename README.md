@@ -11,7 +11,7 @@ We will refer to the top-level directory as `$TOP`.
 
 ## Keras
 
-We countered the following error using Keras 2.2.0. 
+We encountered the following error using Keras 2.2.0. 
 `TypeError: softmax() got an unexpected keyword argument 'axis'`
 
 This can be fixed by editing `keras/backend/tensorflow_backend.py` in your Python packages. Look for `tf.nn.softmax(x, axis=axis)` and remove the `axis` argument. 
