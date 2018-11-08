@@ -75,7 +75,7 @@ wget --no-check-certificate \
 -O models.tar.gz
 ```
 
-You can delete the existing `models/` directory and replace it with this one. It contains all of the code in addition to the model weights and pretrained models (see below). 
+You can delete the existing `models/` directory and replace it with this one. It contains all of the code in addition to the model weights and pretrained models (see below). The file is 22 GB so the download may take a while.  
 
 ## Pretrained Models
 We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them via the following command: 
