@@ -56,8 +56,9 @@ This will filter out the stage 1 training data. Then, run the following script t
 # Training 
 
 ## Pretrained Models
-We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them here:
-https://drive.google.com/file/d/1rI_WSlot6ZNa_ERdLSCsGquUXEK_ikYb/view?usp=sharing
+We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them via the following command: 
+`wget --no-check-certificate -r 'https://docs.google.com/uc?export=download&id=1rI_WSlot6ZNa_ERdLSCsGquUXEK_ikYb' -O pretrained.zip`
+
 
 Unzip them into `models/pretrained`.
 
