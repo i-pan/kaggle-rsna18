@@ -7,6 +7,8 @@ conda create -n kaggle-rsna18 python=2.7 pip
 pip install -r requirements.txt
 ```
 
+We used CUDA 8.0/cuDNN v6.0. You may need to change the TensorFlow version for different versions of CUDA/cuDNN. Please use Keras 2.2.0. 
+
 We will refer to the top-level directory as `$TOP`.
 
 ## Keras
@@ -55,6 +57,14 @@ This will filter out the stage 1 training data. Then, run the following script t
 
 # Training 
 
+In `$TOP/.keras/keras.json` you will find the Keras configuration we used to train some of our models. We adapted the Keras code for existing model architectures to accept grayscale (1-channel) input. You can find this code in `src/grayscale-models/`.
+
+To train all models in the ensemble:
+
+`sh train.sh`
+
+Comment out lines if you only wish to train specific models. 
+
 ## Pretrained Models
 We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them via the following command: 
 
@@ -65,16 +75,7 @@ wget --no-check-certificate \
 -O pretrained.zip
 ```
 
-
 Unzip them into `models/pretrained`.
-
-In `$TOP/.keras/keras.json` you will find the Keras configuration we used to train some of our models. 
-
-To train all models in the ensemble:
-
-`sh train.sh`
-
-Comment out lines if you only wish to train specific models. 
 
 ## Multiple GPUs
 
@@ -100,7 +101,7 @@ For example:
 
 `mv $TOP/models/classifiers/snapshots/binary/InceptionResNetV2/fold0/weights/weights_subepoch_005.h5 $TOP/models/classifiers/binary/InceptionResNetV2_Fold0Px256_e005.h5` 
 
-Please follow this file name format because the inference code depends on it. Make sure you include the exact model architecture name, fold, image resolution, and a suffix for the epoch you used. Also note that model checkpoints are saved within `classifier/snapshots` but final checkpoints are stored in `classifier`. There are also separate folders for `binary` versus `multiclass` and it's important to retain this distinction. 
+Please follow this file name format because the inference code depends on it. Make sure you include the exact model architecture name, fold, image resolution, and a suffix for the epoch you used. Note that model checkpoints are saved within `classifiers/snapshots` but final checkpoints should be stored in `classifiers`. There are also separate folders for `binary` versus `multiclass` and it's important to retain this distinction. 
 
 For RetinaNet models, model checkpoints will be stored within `$TOP/models/RetinaNet/output/<cloud|skippy>/fold[0-9]_384/`. Once you have selected your preferred checkpoint, please store it in `$TOP/models/RetinaNet/output/<cloud|skippy>/fold[0-9]_384_<resnet101|resnet152>_csv_<epochNum>.h5`, which is one directory above where checkpoints were originally saved. 
 
