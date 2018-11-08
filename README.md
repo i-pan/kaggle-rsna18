@@ -114,3 +114,12 @@ This code will train 1 InceptionResNetV2 classifier at 256x256px and 5 deformabl
 In this case, the model checkpoints will be saved in `$TOP/models/one_classifier/snapshots/binary/InceptionResNetV2/fold0/weights/`. You will need to move your selected checkpoint to `$TOP/models/one_classifier/binary/`.
 
 `sh predict_simple.sh`
+
+# Acknowledgements
+
+We used code from the following repositories: 
+
+https://github.com/msracver/Deformable-ConvNets
+https://github.com/msracver/Relation-Networks-for-Object-Detection
+https://github.com/fizyr/keras-retinanet
+https://github.com/ahrnbom/ensemble-objdet
