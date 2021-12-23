@@ -69,25 +69,10 @@ Comment out lines if you only wish to train specific models.
 To download the trained models we used for the challenge, use: 
 
 ```
-wget --no-check-certificate \
-                         -r \
-'https://docs.google.com/uc?export=download&id=12abFXy7-FOwoKxFSJ__IbOGm9oQDU7CQ' \
--O models.tar.gz
+kaggle datasets download vaillant/rsna18-pna-checkpoints
 ```
 
-You can delete the existing `models/` directory and replace it with this one. It contains all of the code in addition to the model weights and pretrained models (see below). The file is 22 GB so the download may take a while.  
-
-## Pretrained Models
-We pretrained InceptionResNetV2, Xception, and DenseNet169 on the NIH ChestXray14 dataset. The training code for the classification ensemble depends on the existence of the pretrained models. You can download them via the following command: 
-
-```
-wget --no-check-certificate \
-                         -r \
-'https://docs.google.com/uc?export=download&id=1rI_WSlot6ZNa_ERdLSCsGquUXEK_ikYb' \
--O pretrained.zip
-```
-
-Unzip them into `models/pretrained`.
+After you unzip the file, you will have `rsna18-pna-checkpoints/models`, which you can use to replace the existing `models/` in this repo (i.e., if you are in `$TOP`, you can run `mv rsna18-pna-checkpoints/models .`). It contains all of the code in addition to the model weights and pretrained models (see below). The file is 22 GB so the download may take a while.  
 
 ## Multiple GPUs
 
