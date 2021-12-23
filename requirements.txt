@@ -1,5 +1,5 @@
 keras==2.2.0
-tensorflow-gpu==1.4.1
+tensorflow-gpu==2.5.2
 pandas==0.23.4
 scikit-image==0.14.1
 scikit-learn==0.20.0
